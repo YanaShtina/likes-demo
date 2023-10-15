@@ -360,14 +360,14 @@ var enableBodyScroll = bodyScrollLock.enableBodyScroll;
 /* harmony default export */ var scrollTo = ({
   scroll: function scroll() {
     var links = document.querySelectorAll('.js-scroll');
-    var targetElement = document.querySelector('.nav');
+    var targetElement = document.querySelector('.nav__wrap');
     links.forEach(function (link) {
       link.addEventListener('click', function (e) {
         e.preventDefault();
         var target = this.dataset.target;
         var scrollTarget = document.querySelector(".".concat(target));
         var burger = document.querySelector('.burger');
-        var nav = document.querySelector('.nav');
+        var nav = document.querySelector('.nav__wrap');
         var body = document.querySelector('body');
         var topOffset;
         burger.classList.remove('active');
@@ -10115,11 +10115,11 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
       });
     } else if (mql.matches == true) {
       tlRocket.to(rocket, {
-        y: -20,
-        duration: 3
+        y: -30,
+        duration: 2
       }).to(rocket, {
         y: 0,
-        duration: 3
+        duration: 2
       });
       rainItems.forEach(function (rainItem, index) {
         var tlItem = gsapWithCSS.timeline({
@@ -10153,23 +10153,29 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
       var title = document.querySelector('.hashtags__list');
       var card2 = document.querySelector('.hashtags__item._2');
       var card3 = document.querySelector('.hashtags__item._3');
+      var card4 = document.querySelector('.hashtags__item._4');
       console.log('card3', card3);
       var tl = gsapWithCSS.timeline();
       tl.to(card2, {
-        top: 0,
-        duration: 3
+        top: 20,
+        duration: 30
       }).to(card3, {
-        top: 0,
-        duration: 3
+        top: 40,
+        duration: 30
+      }).to(card4, {
+        top: 30,
+        duration: 30
       });
       ScrollTrigger_ScrollTrigger.create({
         trigger: section,
-        start: '-50px',
+        start: '-10px',
         end: '2000 top',
         animation: tl,
-        /*  markers: true, */
+        markers: true,
         pin: true,
-        scrub: true
+        scrub: true,
+        duration: 100,
+        anticipatePin: 1
       });
     }
   },
@@ -19163,24 +19169,20 @@ function EffectCards({
         el: '.swiper-pagination',
         clickable: true
       },
-      spaceBetween: 10,
-      loop: true,
-      initialSlide: 1,
-      slidesPerView: 1.2,
-      /*    centeredSlides: true,  */
-      freeMode: true,
-      centeredSlidesBounds: true,
-      /*       centeredSlidesBounds: true,  */
-
+      slidesPerView: 1,
+      spaceBetween: 30,
+      centeredSlides: true,
+      initialSlide: 3,
       breakpoints: {
         700: {
-          slidesPerView: 3,
-          spaceBetween: 38,
-          initialSlide: 1,
+          slidesPerView: 4,
+          spaceBetween: 30,
           centeredSlides: true,
-          freeMode: true,
+          initialSlide: 3
+
+          /*        freeMode: true, */
           /*           centeredSlidesBounds: true,  */
-          loop: true
+          /*       loop: true,  */
         }
       }
     });
@@ -19232,14 +19234,13 @@ scrollTo.scroll();
 popup.init();
 burger.init();
 counter.init();
-/* gsap.initHero();
-gsap.initRocket(); */
-/*gsap.scrollCards();
-gsap.scrollResults();
-gsap.more();
-gsap.why(); */
-/* gsap.how(); */
-
+modules_gsap.initHero();
+modules_gsap.initRocket();
+modules_gsap.scrollCards();
+modules_gsap.scrollResults();
+modules_gsap.more();
+modules_gsap.why();
+modules_gsap.how();
 sliders.initReviews();
 sliders.initTop();
 }();
