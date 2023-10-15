@@ -9778,22 +9778,26 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
       repeat: -1
     });
     tlDots.to('._bg-dots', {
-      rotationZ: -10,
-      duration: 3
-    }).to('._bg-dots', {
-      rotationZ: 0,
-      duration: 3
+      rotationZ: 360,
+      duration: 100
     });
+    /*    .to('._bg-dots', {
+          rotationZ: 0,
+          duration:3,
+    
+        })  */
+
     var tlBG = gsapWithCSS.timeline({
       repeat: -1
     });
     tlBG.to('._bg-main', {
-      rotationZ: 10,
-      duration: 3
-    }).to('._bg-main', {
-      rotationZ: 0,
-      duration: 3
+      rotationZ: -360,
+      duration: 100
     });
+    /*    .to('._bg-main', {
+         rotationZ: 0,
+         duration:3,
+        }) */
 
     // анимация эмоджи 
     var leftItem1 = document.querySelector('._left-1');
@@ -9942,53 +9946,104 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
 
     if (mql.matches != true) {
       var tl = gsapWithCSS.timeline({
-        repeat: -1 // Repeat the animation infinitely
+        repeat: -1,
+        repeatDelay: 0.5
       });
-
-      tl.to(".rocket__item._1 .icon, .rocket__item._1 .text", {
-        scale: 1.2
-      }).to(".rocket__item._1 .arrow", {
-        opacity: 1
+      var duration = 0.2;
+      tl.to(".rocket__item._1", {
+        background: 'rgba(255, 255, 255, 0.2)',
+        duration: duration
       }).to(".rocket__item._1 .icon, .rocket__item._1 .text", {
-        scale: 1
+        scale: 1.2,
+        duration: duration
       }).to(".rocket__item._1 .arrow", {
-        opacity: 0
+        opacity: 1,
+        duration: duration
+      }).to(".rocket__item._1 .icon, .rocket__item._1 .text", {
+        scale: 1,
+        duration: duration
+      }).to(".rocket__item._1 .arrow", {
+        opacity: 0,
+        duration: duration
+      }).to(".rocket__item._1", {
+        background: 'rgba(255, 255, 255, 0.1)',
+        duration: 0
       });
-      tl.to(".rocket__item._2 .icon, .rocket__item._2 .text", {
-        scale: 1.2
-      }).to(".rocket__item._2 .arrow", {
-        opacity: 1
+      tl.to(".rocket__item._2", {
+        background: 'rgba(255, 255, 255, 0.2)',
+        duration: duration
       }).to(".rocket__item._2 .icon, .rocket__item._2 .text", {
-        scale: 1
+        scale: 1.2,
+        duration: duration
       }).to(".rocket__item._2 .arrow", {
-        opacity: 0
+        opacity: 1,
+        duration: duration
+      }).to(".rocket__item._2 .icon, .rocket__item._2 .text", {
+        scale: 1.2,
+        duration: duration
+      }).to(".rocket__item._2 .arrow", {
+        opacity: 0,
+        duration: duration
+      }).to(".rocket__item._2", {
+        background: 'rgba(255, 255, 255, 0.1)',
+        duration: 0
       });
-      tl.to(".rocket__item._3 .icon, .rocket__item._3 .text", {
-        scale: 1.2
-      }).to(".rocket__item._3 .arrow", {
-        opacity: 1
+      tl.to(".rocket__item._3", {
+        background: 'rgba(255, 255, 255, 0.2)',
+        duration: duration
       }).to(".rocket__item._3 .icon, .rocket__item._3 .text", {
-        scale: 1
+        scale: 1.2,
+        duration: duration
       }).to(".rocket__item._3 .arrow", {
-        opacity: 0
+        opacity: 1,
+        duration: duration
+      }).to(".rocket__item._3 .icon, .rocket__item._3 .text", {
+        scale: 1,
+        duration: duration
+      }).to(".rocket__item._3 .arrow", {
+        opacity: 0,
+        duration: duration
+      }).to(".rocket__item._3", {
+        background: 'rgba(255, 255, 255, 0.1)',
+        duration: 0
       });
-      tl.to(".rocket__item._4 .icon, .rocket__item._4 .text", {
-        scale: 1.2
-      }).to(".rocket__item._4 .arrow", {
-        opacity: 1
+      tl.to(".rocket__item._4", {
+        background: 'rgba(255, 255, 255, 0.2)',
+        duration: duration
       }).to(".rocket__item._4 .icon, .rocket__item._4 .text", {
-        scale: 1
+        scale: 1.2,
+        duration: duration
       }).to(".rocket__item._4 .arrow", {
-        opacity: 0
+        opacity: 1,
+        duration: duration
+      }).to(".rocket__item._4 .icon, .rocket__item._4 .text", {
+        scale: 1,
+        duration: duration
+      }).to(".rocket__item._4 .arrow", {
+        opacity: 0,
+        duration: duration
+      }).to(".rocket__item._4", {
+        background: 'rgba(255, 255, 255, 0.1)',
+        duration: 0
       });
-      tl.to(".rocket__item._5 .icon, .rocket__item._5 .text", {
-        scale: 1.2
-      }).to(".rocket__item._5 .arrow", {
-        opacity: 1
+      tl.to(".rocket__item._5", {
+        background: 'rgba(255, 255, 255, 0.2)',
+        duration: duration
       }).to(".rocket__item._5 .icon, .rocket__item._5 .text", {
-        scale: 1
+        scale: 1.2,
+        duration: duration
       }).to(".rocket__item._5 .arrow", {
-        opacity: 0
+        opacity: 1,
+        duration: duration
+      }).to(".rocket__item._5 .icon, .rocket__item._5 .text", {
+        scale: 1,
+        duration: duration
+      }).to(".rocket__item._5 .arrow", {
+        opacity: 0,
+        duration: duration
+      }).to(".rocket__item._5", {
+        background: 'rgba(255, 255, 255, 0.1)',
+        duration: 0
       });
     } else if (mql.matches == true) {
       var _tl = gsapWithCSS.timeline({
@@ -10031,13 +10086,13 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
     var rainItems = document.querySelectorAll(".rain-item-svg");
     if (mql.matches != true) {
       tlRocket.to(rocket, {
-        y: -90,
+        y: -70,
         /*     opacity:0.4, */
-        duration: 1
+        duration: 2
       }).to(rocket, {
         /*   opacity:1, */
         y: 0,
-        duration: 1
+        duration: 2
       });
       rainItems.forEach(function (rainItem, index) {
         var tlItem = gsapWithCSS.timeline({
@@ -10061,10 +10116,10 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
     } else if (mql.matches == true) {
       tlRocket.to(rocket, {
         y: -20,
-        duration: 5
+        duration: 3
       }).to(rocket, {
         y: 0,
-        duration: 5
+        duration: 3
       });
       rainItems.forEach(function (rainItem, index) {
         var tlItem = gsapWithCSS.timeline({
@@ -10233,6 +10288,23 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
       scale: 1,
       duration: 2
     });
+  },
+  how: function how() {
+    var bg = document.querySelector('.how__bg-anim');
+    var mql = window.matchMedia("(max-width: 700px)");
+    console.log('mql', mql.matches);
+    if (mql.matches != true) {
+      var tl = gsapWithCSS.timeline({
+        repeat: -1
+      });
+      tl.to(bg, {
+        translateX: '-60%',
+        duration: 15
+      }).to(bg, {
+        translateX: '155%',
+        duration: 15
+      });
+    }
   }
 });
 ;// CONCATENATED MODULE: ./node_modules/ssr-window/ssr-window.esm.js
@@ -19160,12 +19232,14 @@ scrollTo.scroll();
 popup.init();
 burger.init();
 counter.init();
-modules_gsap.initHero();
-modules_gsap.initRocket();
-modules_gsap.scrollCards();
-modules_gsap.scrollResults();
-modules_gsap.more();
-modules_gsap.why();
+/* gsap.initHero();
+gsap.initRocket(); */
+/*gsap.scrollCards();
+gsap.scrollResults();
+gsap.more();
+gsap.why(); */
+/* gsap.how(); */
+
 sliders.initReviews();
 sliders.initTop();
 }();
