@@ -10254,7 +10254,7 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
         start: '-50px',
         end: '1000 top',
         animation: tl,
-        markers: true,
+        /*    markers: true, */
         pin: true,
         scrub: true
       });
