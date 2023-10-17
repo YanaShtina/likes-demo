@@ -291,6 +291,13 @@ var enableBodyScroll = function enableBodyScroll(targetElement) {
 
 
 
+/***/ }),
+
+/***/ 265:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/more-anim.json";
+
 /***/ })
 
 /******/ 	});
@@ -332,6 +339,18 @@ var enableBodyScroll = function enableBodyScroll(targetElement) {
 /******/ 		};
 /******/ 	}();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	!function() {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	}();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	!function() {
 /******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
@@ -346,6 +365,29 @@ var enableBodyScroll = function enableBodyScroll(targetElement) {
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	!function() {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	}();
 /******/ 	
 /************************************************************************/
@@ -384,6 +426,18 @@ var enableBodyScroll = bodyScrollLock.enableBodyScroll;
           behavior: 'smooth'
         });
       });
+    });
+    var header = document.querySelector('.header');
+    var headerHeight = header.offsetHeight;
+    console.log('headerHeight', headerHeight);
+    window.addEventListener('scroll', function () {
+      var scrollY = window.scrollY;
+      var hideThreshold = 0.2 * headerHeight;
+      if (scrollY > hideThreshold) {
+        header.classList.add('active');
+      } else {
+        header.classList.remove('active');
+      }
     });
   }
 });
@@ -9778,26 +9832,22 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
       repeat: -1
     });
     tlDots.to('._bg-dots', {
-      rotationZ: 360,
-      duration: 100
+      rotationZ: -10,
+      duration: 7
+    }).to('._bg-dots', {
+      rotationZ: 0,
+      duration: 7
     });
-    /*    .to('._bg-dots', {
-          rotationZ: 0,
-          duration:3,
-    
-        })  */
-
     var tlBG = gsapWithCSS.timeline({
       repeat: -1
     });
     tlBG.to('._bg-main', {
-      rotationZ: -360,
-      duration: 100
+      rotationZ: 10,
+      duration: 7
+    }).to('._bg-main', {
+      rotationZ: 0,
+      duration: 7
     });
-    /*    .to('._bg-main', {
-         rotationZ: 0,
-         duration:3,
-        }) */
 
     // анимация эмоджи 
     var leftItem1 = document.querySelector('._left-1');
@@ -9947,103 +9997,103 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
     if (mql.matches != true) {
       var tl = gsapWithCSS.timeline({
         repeat: -1,
-        repeatDelay: 0.5
+        repeatDelay: 3
       });
-      var duration = 0.2;
+      var duration = 0.5;
       tl.to(".rocket__item._1", {
         background: 'rgba(255, 255, 255, 0.2)',
         duration: duration
-      }).to(".rocket__item._1 .icon, .rocket__item._1 .text", {
-        scale: 1.2,
-        duration: duration
       }).to(".rocket__item._1 .arrow", {
         opacity: 1,
+        duration: 0.5
+      }).to(".rocket__item._1 .icon, .rocket__item._1 .text", {
+        scale: 1.2,
         duration: duration
       }).to(".rocket__item._1 .icon, .rocket__item._1 .text", {
         scale: 1,
         duration: duration
+      }).to(".rocket__item._1", {
+        background: 'rgba(255, 255, 255, 0.1)',
+        duration: duration
       }).to(".rocket__item._1 .arrow", {
         opacity: 0,
         duration: duration
-      }).to(".rocket__item._1", {
-        background: 'rgba(255, 255, 255, 0.1)',
-        duration: 0
       });
       tl.to(".rocket__item._2", {
         background: 'rgba(255, 255, 255, 0.2)',
         duration: duration
-      }).to(".rocket__item._2 .icon, .rocket__item._2 .text", {
-        scale: 1.2,
-        duration: duration
       }).to(".rocket__item._2 .arrow", {
         opacity: 1,
         duration: duration
       }).to(".rocket__item._2 .icon, .rocket__item._2 .text", {
         scale: 1.2,
         duration: duration
-      }).to(".rocket__item._2 .arrow", {
-        opacity: 0,
+      }).to(".rocket__item._2 .icon, .rocket__item._2 .text", {
+        scale: 1,
         duration: duration
       }).to(".rocket__item._2", {
         background: 'rgba(255, 255, 255, 0.1)',
-        duration: 0
+        duration: duration
+      }).to(".rocket__item._2 .arrow", {
+        opacity: 0,
+        duration: duration
       });
       tl.to(".rocket__item._3", {
         background: 'rgba(255, 255, 255, 0.2)',
         duration: duration
-      }).to(".rocket__item._3 .icon, .rocket__item._3 .text", {
-        scale: 1.2,
-        duration: duration
       }).to(".rocket__item._3 .arrow", {
         opacity: 1,
         duration: duration
       }).to(".rocket__item._3 .icon, .rocket__item._3 .text", {
+        scale: 1.2,
+        duration: duration
+      }).to(".rocket__item._3 .icon, .rocket__item._3 .text", {
         scale: 1,
+        duration: duration
+      }).to(".rocket__item._3", {
+        background: 'rgba(255, 255, 255, 0.1)',
         duration: duration
       }).to(".rocket__item._3 .arrow", {
         opacity: 0,
         duration: duration
-      }).to(".rocket__item._3", {
-        background: 'rgba(255, 255, 255, 0.1)',
-        duration: 0
       });
       tl.to(".rocket__item._4", {
         background: 'rgba(255, 255, 255, 0.2)',
         duration: duration
-      }).to(".rocket__item._4 .icon, .rocket__item._4 .text", {
-        scale: 1.2,
-        duration: duration
       }).to(".rocket__item._4 .arrow", {
         opacity: 1,
         duration: duration
       }).to(".rocket__item._4 .icon, .rocket__item._4 .text", {
+        scale: 1.2,
+        duration: duration
+      }).to(".rocket__item._4 .icon, .rocket__item._4 .text", {
         scale: 1,
+        duration: duration
+      }).to(".rocket__item._4", {
+        background: 'rgba(255, 255, 255, 0.1)',
         duration: duration
       }).to(".rocket__item._4 .arrow", {
         opacity: 0,
         duration: duration
-      }).to(".rocket__item._4", {
-        background: 'rgba(255, 255, 255, 0.1)',
-        duration: 0
       });
       tl.to(".rocket__item._5", {
         background: 'rgba(255, 255, 255, 0.2)',
         duration: duration
-      }).to(".rocket__item._5 .icon, .rocket__item._5 .text", {
-        scale: 1.2,
-        duration: duration
       }).to(".rocket__item._5 .arrow", {
         opacity: 1,
         duration: duration
       }).to(".rocket__item._5 .icon, .rocket__item._5 .text", {
+        scale: 1.2,
+        duration: duration
+      }).to(".rocket__item._5 .icon, .rocket__item._5 .text", {
         scale: 1,
+        duration: duration
+      }).to(".rocket__item._5", {
+        background: 'rgba(255, 255, 255, 0.1)',
         duration: duration
       }).to(".rocket__item._5 .arrow", {
         opacity: 0,
         duration: duration
-      }).to(".rocket__item._5", {
-        background: 'rgba(255, 255, 255, 0.1)',
-        duration: 0
       });
     } else if (mql.matches == true) {
       var _tl = gsapWithCSS.timeline({
@@ -10168,10 +10218,10 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
       });
       ScrollTrigger_ScrollTrigger.create({
         trigger: section,
-        start: '-10px',
-        end: '2000 top',
+        start: '-80px',
+        end: '2400 top',
         animation: tl,
-        markers: true,
+        /*   markers: true, */
         pin: true,
         scrub: true,
         duration: 100,
@@ -10198,19 +10248,13 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
       }).to(scroll3, {
         top: 0,
         duration: 3
-      }).to(scroll4, {
-        top: 0,
-        duration: 3
-      }).to(scroll5, {
-        top: 0,
-        duration: 3
       });
       ScrollTrigger_ScrollTrigger.create({
         trigger: section,
         start: '-50px',
-        end: '1500 top',
+        end: '1000 top',
         animation: tl,
-        /*  markers: true, */
+        markers: true,
         pin: true,
         scrub: true
       });
@@ -10242,58 +10286,114 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
     });
   },
   why: function why() {
-    var tl = gsapWithCSS.timeline({
-      repeat: -1
-    });
-    tl.to(".reasons__item._l._1", {
-      backgroundColor: '#F6BE2C',
-      scale: 1.2,
-      duration: 2
-    }).to(".reasons__item._l._1", {
-      backgroundColor: '#ffffff',
-      scale: 1,
-      duration: 2
-    }).to(".reasons__item._r._1", {
-      backgroundColor: '#F6BE2C',
-      scale: 1.2,
-      duration: 2
-    }).to(".reasons__item._r._1", {
-      backgroundColor: '#ffffff',
-      scale: 1,
-      duration: 2
-    }).to(".reasons__item._l._2", {
-      backgroundColor: '#F6BE2C',
-      scale: 1.2,
-      duration: 2
-    }).to(".reasons__item._l._2", {
-      backgroundColor: '#ffffff',
-      scale: 1,
-      duration: 2
-    }).to(".reasons__item._r._2", {
-      backgroundColor: '#F6BE2C',
-      scale: 1.2,
-      duration: 2
-    }).to(".reasons__item._r._2", {
-      backgroundColor: '#ffffff',
-      scale: 1,
-      duration: 2
-    }).to(".reasons__item._l._3", {
-      backgroundColor: '#F6BE2C',
-      scale: 1.2,
-      duration: 2
-    }).to(".reasons__item._l._3", {
-      backgroundColor: '#ffffff',
-      scale: 1,
-      duration: 2
-    }).to(".reasons__item._r._3", {
-      backgroundColor: '#F6BE2C',
-      scale: 1.2,
-      duration: 2
-    }).to(".reasons__item._r._3", {
-      backgroundColor: '#ffffff',
-      scale: 1,
-      duration: 2
-    });
+    var mql = window.matchMedia("(max-width: 700px)");
+    if (mql.matches != true) {
+      var tl = gsapWithCSS.timeline({
+        repeat: -1
+      });
+      tl.to(".reasons__item._l._1", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._l._1", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      }).to(".reasons__item._r._1", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._r._1", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      }).to(".reasons__item._l._2", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._l._2", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      }).to(".reasons__item._r._2", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._r._2", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      }).to(".reasons__item._l._3", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._l._3", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      }).to(".reasons__item._r._3", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._r._3", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      });
+    } else {
+      var _tl2 = gsapWithCSS.timeline({
+        repeat: -1
+      });
+      _tl2.to(".reasons__item._l._1", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._l._1", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      }).to(".reasons__item._l._2", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._l._2", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      }).to(".reasons__item._l._3", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._l._3", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      }).to(".reasons__item._r._1", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._r._1", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      }).to(".reasons__item._r._2", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._r._2", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      }).to(".reasons__item._r._3", {
+        backgroundColor: '#F6BE2C',
+        scale: 1.2,
+        duration: 2
+      }).to(".reasons__item._r._3", {
+        backgroundColor: '#ffffff',
+        scale: 1,
+        duration: 2
+      });
+    }
   },
   how: function how() {
     var bg = document.querySelector('.how__bg-anim');
@@ -19172,19 +19272,72 @@ function EffectCards({
       slidesPerView: 1,
       spaceBetween: 30,
       centeredSlides: true,
-      initialSlide: 3,
+      initialSlide: 7,
       breakpoints: {
         700: {
-          slidesPerView: 4,
-          spaceBetween: 30,
+          slidesPerView: 5,
+          spaceBetween: 28,
           centeredSlides: true,
           initialSlide: 3
-
-          /*        freeMode: true, */
-          /*           centeredSlidesBounds: true,  */
-          /*       loop: true,  */
         }
       }
+    });
+    swiper.on('click', function (e) {
+      var clickedIndex = swiper.clickedIndex;
+      swiper.slideTo(clickedIndex);
+      var clickedSlide = swiper.clickedSlide;
+      var videInner = clickedSlide.querySelector('video');
+      var videos = document.querySelectorAll('video');
+      videos.forEach(function (v) {
+        var slide = v.closest('.slider__item');
+        var vid = v.closest('.slider__item-video');
+        if (slide != null && slide.classList.contains('swiper-slide-active') === false) {
+          v.pause();
+          vid.classList.add('pause');
+          /*   videInner.controls = false; */
+        }
+
+        if (slide != null && slide.classList.contains('swiper-slide-active') && v.paused == true) {
+          vid.classList.remove('pause');
+          v.play();
+          console.log('click1', v.played, v.paused);
+        } else if (slide != null && slide.classList.contains('swiper-slide-active') && v.paused == false) {
+          vid.classList.add('pause');
+          v.pause();
+          console.log('click3', v.played, v.paused);
+        }
+
+        /*      if(slide != null && slide.classList.contains('swiper-slide-active') && v.paused == false) {
+               v.pause();
+               console.log('click3', v.played, v.paused);
+             }  */
+      });
+    });
+
+    var btns = document.querySelectorAll('.swiper-button');
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var videos = document.querySelectorAll('video');
+        videos.forEach(function (v) {
+          var slide = v.closest('.slider__item');
+          var vid = v.closest('.slider__item-video');
+          if (slide != null && slide.classList.contains('swiper-slide-active') === false) {
+            v.pause();
+            vid.classList.add('pause');
+            /*   videInner.controls = false; */
+          }
+
+          if (slide != null && slide.classList.contains('swiper-slide-active') && v.paused == true) {
+            vid.classList.remove('pause');
+            v.play();
+            console.log('click1', v.played, v.paused);
+          } else if (slide != null && slide.classList.contains('swiper-slide-active') && v.paused == false) {
+            vid.classList.add('pause');
+            v.pause();
+            console.log('click3', v.played, v.paused);
+          }
+        });
+      });
     });
   },
   initTop: function initTop() {
@@ -19222,7 +19375,23 @@ function EffectCards({
     console.log('dd', span);
   }
 });
+;// CONCATENATED MODULE: ./src/modules/lottie.js
+var img = __webpack_require__(265);
+;
+/* harmony default export */ var lottie = ({
+  init: function init() {
+    var anim = document.querySelector('.lottie');
+    console.log('bodymovin', img);
+    bodymovin.loadAnimation({
+      container: anim,
+      renderer: 'svg',
+      path: img
+      /* speed:2, */
+    });
+  }
+});
 ;// CONCATENATED MODULE: ./src/index.js
+
 
 
 
@@ -19233,6 +19402,7 @@ function EffectCards({
 scrollTo.scroll();
 popup.init();
 burger.init();
+lottie.init();
 counter.init();
 modules_gsap.initHero();
 modules_gsap.initRocket();
