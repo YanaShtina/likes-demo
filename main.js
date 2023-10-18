@@ -466,7 +466,6 @@ var popup_enableBodyScroll = popup_bodyScrollLock.enableBodyScroll;
       // iPad on iOS 13 detection
       || navigator.userAgent.includes("Mac") && "ontouchend" in document;
     };
-    console.log('isApple', isApple());
     openPopupButtons.forEach(function (button) {
       button.addEventListener('click', function (e) {
         e.preventDefault();
@@ -10170,7 +10169,7 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
         start: '-80px',
         end: '2400 top',
         animation: tl,
-        markers: true,
+        /*     markers: true, */
         pin: true,
         scrub: true,
         duration: 100,
