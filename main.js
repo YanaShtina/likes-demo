@@ -490,7 +490,6 @@ var popup_enableBodyScroll = popup_bodyScrollLock.enableBodyScroll;
 
         var closePopupButton = popupBg.querySelector('.close-popup');
         closePopupButton.addEventListener('click', function () {
-          //  console.log('closePopupButton');
           popupBg.classList.remove('active');
           popup.classList.remove('active');
           popup_enableBodyScroll(targetElement);
@@ -10082,17 +10081,14 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
     // ракета
     var rocket = document.querySelector('.rocket__img');
     var tlRocket = gsapWithCSS.timeline({
-      repeat: -1 // Repeat the animation infinitely
+      repeat: -1
     });
-
     var rainItems = document.querySelectorAll(".rain-item-svg");
     if (mql.matches != true) {
       tlRocket.to(rocket, {
         y: -70,
-        /*     opacity:0.4, */
         duration: 2
       }).to(rocket, {
-        /*   opacity:1, */
         y: 0,
         duration: 2
       });
@@ -10111,9 +10107,6 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
           duration: 2,
           delay: index * 0.1
         });
-        /*      .set(rainItem, { y: "-120%" });
-         
-           tlRain.add(tlItem, 0); // Ensure that each item starts at the same time */
       });
     } else if (mql.matches == true) {
       tlRocket.to(rocket, {
@@ -10139,9 +10132,6 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
           duration: 2,
           delay: index * 0.1
         });
-        /*      .set(rainItem, { y: "-120%" });
-         
-           tlRain.add(tlItem, 0); // Ensure that each item starts at the same time */
       });
     }
   },
@@ -10156,24 +10146,22 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
       var tl = gsapWithCSS.timeline();
       tl.to(card2, {
         top: 20,
-        duration: 30
+        duration: 1
       }).to(card3, {
         top: 40,
-        duration: 30
+        duration: 1
       }).to(card4, {
         top: 30,
-        duration: 30
+        duration: 1
       });
       ScrollTrigger_ScrollTrigger.create({
         trigger: section,
         start: '-80px',
-        end: '2400 top',
+        end: '5000',
         animation: tl,
-        /*     markers: true, */
+        /*    markers: true, */
         pin: true,
-        scrub: true,
-        duration: 100,
-        anticipatePin: 1
+        scrub: true
       });
     }
   },
@@ -19216,19 +19204,18 @@ function EffectCards({
       slidesPerView: 1,
       spaceBetween: 30,
       centeredSlides: true,
-      initialSlide: 13,
-      /*   loop: true, */
+      initialSlide: 17,
+      loop: false,
       breakpoints: {
         700: {
           slidesPerView: 5,
           spaceBetween: 28,
           centeredSlides: true,
-          initialSlide: 3
-          /*  loop: true, */
+          initialSlide: 13,
+          loop: true
         }
       }
     });
-
     swiper.on('click', function (e) {
       var clickedIndex = swiper.clickedIndex;
       swiper.slideTo(clickedIndex);
