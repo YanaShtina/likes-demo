@@ -10273,7 +10273,7 @@ gsapWithCSS.registerPlugin(ScrollTrigger_ScrollTrigger);
         scale: 1,
         duration: 2
       });
-    } else {
+    } else if (mql.matches == true) {
       var _tl2 = gsapWithCSS.timeline({
         repeat: -1
       });
